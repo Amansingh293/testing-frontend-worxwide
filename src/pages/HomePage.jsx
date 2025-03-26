@@ -30,7 +30,7 @@ const HomePage = () => {
     <>
       {/* <ChatbotExanding/> */}
       <HeroSection />
-      <div className="space-y-[150px] ml-36 mr-36 mt-36 ">
+      <div className="space-y-[150px] w-full xl:px-32 2xl:px-80 mt-36 ">
         <SalesIntelligence />
         <FutureSection />
         <IntegrateTools />
@@ -38,7 +38,7 @@ const HomePage = () => {
           buttonClasses={"-ml-12"}
           heading={"Hear from Our Satisfied Customers"}
         />
-        <SuccessStory className={"-ml-[390px] -mr-[170px"} />
+        <SuccessStory className={"-ml-[390px] -mr-[170px]"} />
         <Suspense fallback={<Loader />}>
           <CalendlyHomePage />
         </Suspense>{" "}
@@ -52,6 +52,7 @@ const HomePage = () => {
           text={"Insights to Elevate Your Sales Game"}
           goto={"blogdetail"}
           classname={"center"}
+          buttonClass={"xl:-ml-14 2xl:-ml-[420px]"}
         />
         <ContactUs />
         <JoinPartnerProgram />

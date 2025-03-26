@@ -26,8 +26,8 @@ const CostToInclude = () => {
             <div className="absolute top-[20%] -left-[80px] w-[240px] h-[260px] inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#207C97_0deg,#E6F9FF_360deg)] blur-[80px] -z-10"></div>
             <div className="absolute top-[90px] left-[650px] w-[240px] h-[260px] inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#207C97_0deg,#E6F9FF_360deg)] blur-[80px] -z-10"></div>
 
-            <div className="flex justify-center item-center rounded-[12px] bg-white p-4">
-              <div className="bg-white ml-4 rounded-lg p-10 w-full max-w-sm border border-r-2 flex flex-col gap-8">
+            <div className="flex justify-center item-center rounded-[12px] bg-white p-4 pt-[28px] pb-[28px]">
+              <div className="bg-white ml-4 rounded-lg p-10 w-full max-w-sm border border-r-2 flex flex-col gap-8 ">
                 <div className="flex gap-2 m-2">
                   <img
                     src={target}

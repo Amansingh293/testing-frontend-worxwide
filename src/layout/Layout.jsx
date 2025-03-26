@@ -31,7 +31,7 @@ const Layout = () => {
     <div className="flex flex-col items-center bg-[#fcfcfc] w-full">
       <Navbar />
       <ScrollToTop />
-      <main className="w-full ">
+      <main className="w-full mx-auto">
         <Outlet />
       </main>
     </div>

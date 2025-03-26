@@ -5,7 +5,7 @@ import CustomButton from "./CustomButton";
 
 const AiSalesIntelligence = () => {
   return (
-    <div className="flex flex-col gap-10 p-8 bg-white rounded-[16px]">
+    <div className="flex flex-col gap-10 p-8 bg-white rounded-[16px] w-full">
       {" "}
       <div className="flex flex-col gap-4 items-center">
         <h1 className=" text-[#252B37] text-[30px] leading-[38px]">

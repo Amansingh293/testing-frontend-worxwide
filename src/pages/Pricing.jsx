@@ -23,7 +23,7 @@ const Pricing = () => {
   return (
     <>
       <CostToInclude />
-      <div className=" flex flex-col w-4/5 items-center mx-auto gap-32 mt-5">
+      <div className=" flex flex-col w-4/5 items-center mx-auto gap-32 mt-5 max-w-[1200px]">
         {/* Top Heading */}
 
         {/* Pricing Section */}
@@ -37,7 +37,7 @@ const Pricing = () => {
         <StoppingSales />
 
         <Testimonials
-          buttonClasses={"-ml-[70px]"}
+          buttonClasses={"xl:-ml-[70px] 2xl:-ml-[460px] "}
           heading={
             "Discover How Our Tool is Helping Teams Save Time and Boost Performance"
           }

@@ -112,11 +112,11 @@ const BlogSlide = memo(({ text, goto, classname, buttonClass }) => {
           {blogs.map((blog, idx) => (
             <CarouselItem
               key={idx}
-              className="sm:basis-2/5 basis-full flex justify-center h-fit"
+              className="basis-auto flex justify-center h-fit"
             >
               <Card
                 onClick={handleClick}
-                className="mt-5 mb-5 mr-3  w-auto  p-2 bg-white flex flex-col items-start cursor-pointer rounded-[10px] hover:shadow-[0_6px_16px_0_rgba(0,0,0,0.15)] transition duration-300 overflow-visible"
+                className="mt-5 mb-5 mr-3 h-[438px] w-[509px]  p-2 bg-white flex flex-col items-start cursor-pointer rounded-[10px] hover:shadow-[0_6px_16px_0_rgba(0,0,0,0.15)] transition duration-300 overflow-visible"
               >
                 <img
                   src={blog.image}

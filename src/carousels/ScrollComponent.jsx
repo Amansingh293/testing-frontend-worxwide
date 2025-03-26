@@ -352,7 +352,7 @@ const ScrollComponent = memo(() => {
               </svg>
               </div> */}
 
-              <div className="absolute top-[26px] md:left-[76px] lg:left-[74px] xl:left-[24px] transform -translate-y-1/2 flex items-center justify-center w-[52px] h-[52px] text-white rounded-full border-2 border-dashed border-gray-300 bg-white">
+              <div className="absolute top-[26px] md:left-[76px] lg:left-[74px] xl:left-[24px] 2xl:left-[55px] transform -translate-y-1/2 flex items-center justify-center w-[52px] h-[52px] text-white rounded-full border-2 border-dashed border-gray-300 bg-white">
                 <AnimatePresence mode="wait">
                   {viewedSections.has(index) ? (
                     <motion.div

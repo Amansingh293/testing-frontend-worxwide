@@ -3,7 +3,7 @@ import infographics from "@/assets/Infographics.svg";
 
 const MultiAccountManagement = () => {
   return (
-    <div className="pt-8 pb-8 flex flex-col gap-10 font-inter bg-white rounded-[16px]">
+    <div className="pt-8 pb-8 flex flex-col gap-10 font-inter bg-white rounded-[16px] w-full">
       <div className="flex flex-col gap-4 items-center">
         <h1 className=" text-[#252B37] text-[30px] leading-[38px]">
           Effortless Multi-Account Management with AI

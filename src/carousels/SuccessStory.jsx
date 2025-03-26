@@ -37,12 +37,33 @@ const caseStudies = [
     percentage: "50%",
     description: "increase in task completion rates.",
   },
+  {
+    title: "Top Steel Manufacturing Giant",
+    percentage: "50%",
+    description: "increase in task completion rates.",
+  },
+  {
+    title: "Top Steel Manufacturing Giant",
+    percentage: "50%",
+    description: "increase in task completion rates.",
+  },
+  {
+    title: "Top Steel Manufacturing Giant",
+    percentage: "50%",
+    description: "increase in task completion rates.",
+  },
+  {
+    title: "Top Steel Manufacturing Giant",
+    percentage: "50%",
+    description: "increase in task completion rates.",
+  },
+  
 ];
 
 export default function SuccessStory({ className }) {
   const scrollerRef = useRef(null);
   return (
-    <div className={`w-fit  ${className}`}>
+    <div className={`  ${className}`}>
       <CaseStudiesCarousel caseStudies={caseStudies} />
     </div>
   );
@@ -53,8 +74,8 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
   const scrollerRef = useRef(null);
   return (
     <>
-      <div className={`bg-white w-full flex flex-col items-center py-10`}>
-        <h2 className="text-[#252B37] text-center text-[30px] pr-[24rem] font-inter font-medium leading-[38px] mb-[64px]">
+      <div className={`bg-white w-full flex flex-col items-center py-10 h-fit`}>
+        <h2 className="text-[#252B37] text-center text-[30px] xl:pl-40 font-inter font-medium leading-[38px] mb-[64px]">
           Success Stories Powered by Salesworx
         </h2>
 

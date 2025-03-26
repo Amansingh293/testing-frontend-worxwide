@@ -31,7 +31,7 @@ const testimonials = [
   },
 ];
 
-const Testimonials = memo(({ buttonClasses, heading, headingWidth }) => {
+const Testimonials = memo(({ buttonClasses, heading, headingWidth , customClass}) => {
   const [api, setApi] = useState();
   const [current, setCurrent] = useState(0);
 
@@ -48,7 +48,7 @@ const Testimonials = memo(({ buttonClasses, heading, headingWidth }) => {
   }, [api]);
 
   return (
-    <div className="flex flex-col items-center text-center w-full p-6">
+    <div className={"flex flex-col items-center text-center w-full p-6 "+customClass}>
       <h2
         className={
           "mb-[64px] text-[#000] text-center text-[30px] font-inter font-medium leading-[38px] " +
