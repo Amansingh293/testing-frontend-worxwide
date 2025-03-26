@@ -1,5 +1,5 @@
 import React from "react";
-import infographics from "@/assets/infographics.svg";
+import infographics from "@/assets/Infographics.svg";
 
 const MultiAccountManagement = () => {
   return (
