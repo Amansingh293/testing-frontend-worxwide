@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import SalesGrowthSection from "@/components/pricing/Sales";
+import SalesGrowthSection from "@/components/pricing/SalesGrowthSection";
 import Section from "@/components/common/Section";
 import Testimonials from "@/carousels/Testimonials";
 
