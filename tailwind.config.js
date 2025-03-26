@@ -69,7 +69,7 @@ export default {
         "move-up": "moveUp 2s infinite",
         "move-down": "moveDown 2s infinite",
         scroll:
-          "scroll var(--animation-duration, 10s) var(--animation-direction, forwards) linear infinite",
+          "scroll var(--animation-duration, 20s) var(--animation-direction, forwards) linear infinite",
         "subtle-bounce": "subtleBounce 1.5s infinite ease-in-out",
         "gradient-move": "gradientShift 4s infinite linear",
         "accordion-down": "accordion-down 0.2s ease-out",

@@ -57,13 +57,12 @@ const caseStudies = [
     percentage: "50%",
     description: "increase in task completion rates.",
   },
-  
 ];
 
 export default function SuccessStory({ className }) {
   const scrollerRef = useRef(null);
   return (
-    <div className={`  ${className}`}>
+    <div className={` w-max ${className}`}>
       <CaseStudiesCarousel caseStudies={caseStudies} />
     </div>
   );
@@ -75,15 +74,15 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
   return (
     <>
       <div className={`bg-white w-full flex flex-col items-center py-10 h-fit`}>
-        <h2 className="text-[#252B37] text-center text-[30px] xl:pl-40 font-inter font-medium leading-[38px] mb-[64px]">
+        <h2 className="text-[#252B37] text-center text-[30px] pr-[1710px] font-inter font-medium leading-[38px] ">
           Success Stories Powered by Salesworx
         </h2>
 
         <div ref={containerRef} className="relative z-20  w-full">
-          <div className="flex items-center h-[450px]  w-full overflow-hidden">
+          <div className="flex items-center h-[550px]  w-full overflow-x-hidden">
             <ul
               ref={scrollerRef}
-              className="flex w-full h-[450px] shrink-0 gap-[0px] animate-scroll hover:[animation-play-state:paused] "
+              className="flex w-full h-[400px] shrink-0 gap-[0px] animate-scroll hover:[animation-play-state:paused] "
             >
               {caseStudies.map((item, index) => (
                 <li
@@ -123,7 +122,7 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
           </div>
         </div>
 
-        <div className="flex justify-center pr-[24rem]">
+        <div className="flex justify-center pr-[1710px]">
           <CustomButton
             variant="secondary"
             text={"Start Your Success Journey"}
