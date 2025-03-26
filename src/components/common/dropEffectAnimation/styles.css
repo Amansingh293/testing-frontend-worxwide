@@ -1,0 +1,61 @@
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.first {
+  width: 0;
+  height: 0;
+  background-color: #079fcd;
+  animation: firstExpand 3s ease-in-out infinite;
+}
+
+.second {
+  width: 0;
+  height: 0;
+  background-color: #207c97;
+  animation: secondExpand 3s ease-in-out infinite;
+}
+
+@keyframes firstExpand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  50% {
+    width: 8rem;
+    height: 8rem;
+    opacity: 0.1;
+  }
+  85% {
+    width: 8rem;
+    height: 8rem;
+    opacity: 0;
+  }
+}
+
+@keyframes secondExpand {
+  0%,
+  24% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  65% {
+    width: 8rem;
+    height: 8rem;
+    opacity: 0.3;
+  }
+  100% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+}

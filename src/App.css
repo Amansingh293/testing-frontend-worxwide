@@ -1,0 +1,60 @@
+/* html,
+body,
+#root {
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+} */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.loader-spin {
+  animation: spinner 1.5s linear infinite;
+}
+
+@keyframes spinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Track Styling */
+.slider div {
+  background-color: var(--slider-track-bg) !important;
+  height: inherit !important;
+  border-radius: 9999px; /* Makes the track rounded */
+}
+
+/* Thumb Styling */
+.slider button {
+  background-color: var(--slider-thumb-bg) !important;
+  width: var(--slider-thumb-size) !important;
+  height: var(--slider-thumb-size) !important;
+  border-radius: 50%; /* Makes the thumb circular */
+  transform: translateY(-50%);
+}
+
+.custom-list {
+  list-style: none; /* Remove default bullets */
+  padding-left: 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 20px; /* Space for the dot */
+  margin-bottom: 8px;
+}
+
+.custom-list li::before {
+  content: "•"; /* Unicode for a bullet */
+  color: #207c97; /* Custom color */
+  font-size: 20px; /* Adjust size */
+  position: absolute;
+  left: 0;
+  top: 0;
+}
