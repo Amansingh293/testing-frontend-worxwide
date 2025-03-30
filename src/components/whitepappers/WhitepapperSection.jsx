@@ -1,118 +1,91 @@
-import React from "react";
-import { Link } from "react-router-dom";
-// import timer from "../../assets/timer.gif"
-import  Frame1 from "../../assets/Frame1.png"
-import  Frame2 from "../../assets/Frame2.png"
-import  Frame3 from "../../assets/Frame3.png"
-import  Frame4 from "../../assets/Frame4.png"
-import  Frame5 from "../../assets/Frame5.png"
-import  Frame6 from "../../assets/Frame6.png"
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Frame1 from "../../assets/Frame1.png";
+import Frame2 from "../../assets/Frame2.png";
+import Frame3 from "../../assets/Frame3.png";
+import Frame4 from "../../assets/Frame4.png";
+import Frame5 from "../../assets/Frame5.png";
+import Frame6 from "../../assets/Frame6.png";
 
 import Footer from "@/components/common/Footer";
 import Section from "@/components/common/Section";
-
-
+import TeamSection from "../common/TeamSection";
+import CustomButtonCorrect from "../common/CustomButtonCorrect";
+import { fetchWhitePapers } from "@/services/whitepaperApis";
+import { formatDate } from "@/utils";
+const API_BASE_URL = import.meta.env.VITE_STRAPI_BASE_URL;
 
 const WhitepapperSection = () => {
-  const blogs = [
-    {
-      title: "5 Strategies to Generate High-Quality B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/1",
-      image: Frame1, // Replace with actual image
-    },
-    {
-      title: "5 Key Strategies for Attracting Premium B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/2",
-      image: Frame2, // Replace with actual image
-    },
-    {
-      title: "5 Strategies to Generate High-Quality B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/1",
-      image: Frame3, // Replace with actual image
-    },
-    {
-      title: "5 Strategies to Generate High-Quality B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/1",
-      image: Frame4, // Replace with actual image
-    },
-    {
-      title: "5 Strategies to Generate High-Quality B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/1",
-      image: Frame5, // Replace with actual image
-    },
-    {
-      title: "5 Key Strategies for Attracting Premium B2B Leads",
-      author: "Phoenix Baker",
-      date: "19 Jan 2022",
-      description:
-        "Lorem ipsum dolor sit amet consectetur. Proin fringilla tempus morbi nisi in sapien at.",
-      link: "/blog/2",
-      image: Frame6, // Replace with actual image
-    },
-  ];
+  const [whitepapersData, setWhitepapersData] = useState([]);
+  const navigate = useNavigate();
 
-  // const [blogs, setBlogs] = useState([]);
-  // const [loading, setLoading] = useState(true)
+  const getWhitepapers = async () => {
+    try {
+      const response = await fetchWhitePapers();
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:1337/api/blogs") // Adjust the endpoint to match your API
-  //     .then((response) => {
-  //       setBlogs(response.data.data); // Extract the blogs array
-  //       console.log(response.data.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching blogs:", error);
-  //       setLoading(false);
-  //     });
-  // }, []);
+      if (response?.data != undefined) {
+        setWhitepapersData(response?.data);
+        console.log(whitepapersData);
+      } else {
+        toast.error("Something went wrong ! Please try again later !");
+      }
+      console.log(response?.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (!blogs.length) {
-  //   return <div>No blogs available</div>;
-  // }
+  useEffect(() => {
+    getWhitepapers();
+  }, []);
 
   return (
     <>
-    <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto bg-white">
-      <div className="text-center mb-20">
-        <h2 className="text-3xl font-bold text-gray-800">
-        Unlock Insights That Transform Your Business
-        </h2>
-        <p className="text-gray-600 mt-4">
-        Explore our in-depth whitepaper to uncover cutting-edge strategies and actionable insights tailored for your success.
-        </p>
-      </div>
-      <div className="">
-      <div className="mb-8  space-x-4 flex-wrap">
-      <h2 className="px-4 py-2 mb-4 font-bold">Whitepapers</h2>
-        {/* Blog Filter Buttons */}
-        {["All", "Recents", "Sales Automation", "Lead Generation", "Email Campaigns", "Account-Based Selling"].map(
-          (filter, index) => (
+      {/* ✅ Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: "Unlock Insights That Transform Your Business",
+          author: {
+            "@type": "Person",
+            name: "Phoenix Baker",
+          },
+          datePublished: "2022-01-19",
+          dateModified: "2022-01-19",
+          publisher: {
+            "@type": "Organization",
+            name: "YourCompany",
+          },
+        })}
+      </script>
+
+      <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto ">
+        <header className="text-center mb-20">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Unlock Insights That Transform Your Business
+          </h1>
+          <p className="text-gray-600 mt-4 mb-4">
+            Explore our in-depth whitepapers to uncover cutting-edge strategies
+            and actionable insights tailored for your success.
+          </p>
+          <CustomButtonCorrect
+            text="Get started for free"
+            onClick={() => navigate("/login")}
+          />
+        </header>
+
+        {/* ✅ whitepaper Filter Buttons */}
+        <div className="mb-8 flex-wrap space-x-4">
+          <h2 className="px-4 py-2 mb-4 font-bold">Whitepapers</h2>
+          {[
+            "All",
+            "Recents",
+            "Sales Automation",
+            "Lead Generation",
+            "Email Campaigns",
+            "Account-Based Selling",
+          ].map((filter, index) => (
             <button
               key={index}
               className={`px-4 py-2 rounded-full border ${
@@ -120,52 +93,67 @@ const WhitepapperSection = () => {
                   ? "bg-[#207C97] text-white"
                   : "border-gray-300 text-gray-600 hover:bg-gray-100"
               } transition duration-300`}
+              aria-label={`Filter by ${filter}`}
             >
               {filter}
             </button>
-          )
-        )}
-      </div>
+          ))}
+        </div>
 
-      {/* Blog Grid */}
-      <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
-        {blogs.map((blog, index) => (
-          <Link to="/whitepaperdetail"><div
-            key={index}
-            className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
-          >
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="w-full h-58 object-cover p-2"
-            />
-            <div className="mt-2 p-6">
-              <p className="text-brand font-inter text-base font-medium leading-6">
-                {blog.author} • {blog.date}
-              </p>
-              
-              <p className="mt-[12px] text-[#535862] font-inter text-base font-normal leading-6">{blog.description}</p>
-              {/* className="text-[#535862] text-md font-normal leading-6" */}
-
-              <p className="mt-[20px]">
-              <a 
-                href={blog.link}
-                className="mt-[20px] text-brand font-inter text-base font-medium leading-6"
+        {/* ✅ whitepaper Grid */}
+        <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
+          {whitepapersData?.map((whitepaper, index) => (
+            <Link to={`/Whitepaperdetail/${whitepaper?.slug}`} key={index}>
+              <article
+                className="bg-white rounded-lg overflow-hidden hover:shadow-lg transition duration-300"
+                aria-label={`Read more about ${whitepaper.title}`}
               >
-                Explore our blog →
-              </a>
-              </p>
-            </div>
-          </div></Link>
-        ))}
+                <img
+                  src={`${API_BASE_URL}${whitepaper?.thumbnailImage?.url}`}
+                  alt={whitepaper.title}
+                  className="w-full h-58 object-cover p-2"
+                  loading="lazy"
+                />
+                <div className="mt-2 p-6">
+                  <p className="text-brand font-inter text-base font-medium leading-6">
+                    {whitepaper.author?.name} •{" "}
+                    {formatDate(whitepaper.publishedAt)}
+                  </p>
+                  {/* <h3 className="mt-2 text-xl font-semibold text-gray-800">
+                    {whitepaper.title}
+                  </h3> */}
+                  <p className="mt-2 text-[#535862] font-inter text-[16px] font-normal leading-6">
+                    {whitepaper.seoDescription}
+                  </p>
+                  <p className="mt-4">
+                    <Link
+                      to={whitepaper.link}
+                      className="text-brand font-inter text-[14px] font-medium leading-6"
+                      aria-label={`Read more about ${whitepaper.title}`}
+                    >
+                      Explore our Blog →
+                    </Link>
+                  </p>
+                </div>
+              </article>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ✅ CTA Section */}
+      <div className="mt-36 w-[1000px] mx-auto">
+        <TeamSection
+          title="Start Your Free Trial Today!"
+          description="Transform your sales process with AI-powered automation and insights."
+          buttonText="Try for Free"
+          onButtonClick={() => console.log("CTA Button Clicked")}
+        />
       </div>
-      </div>
-    </section>
-    <div className="space-y-[148px]">
-    <Section text={"Start Your Free Trial Today!"} text2={"Transform your sales process with AI-powered automation and insights."}/>
-              <Footer />
-             </div>
-             </>
+
+      {/* ✅ Footer */}
+      <Footer />
+    </>
   );
 };
 

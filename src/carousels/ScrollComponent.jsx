@@ -176,13 +176,17 @@
 import React, { useState, useEffect, useRef, memo } from "react";
 import ss from "../assets/ss.mp4";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CustomButton from "@/components/CustomButton";
 
 const sections = [
   {
     heading: "Hyperpersonalized Outreach",
     content:
       "Connect like never before. Tailor every message with AI-driven personalization to address your prospect’s unique needs and preferences.",
+    stat: "3X",
+    statDescription:
+      "increase in response rates while reducing SDR workload by half!",
     button: "Learn How to Personalize",
   },
   {
@@ -190,12 +194,16 @@ const sections = [
     content:
       "Engage prospects across multiple channels in a seamless and efficient manner.",
     button: "See Omnichannel in Action",
+    stat: "50%",
+    statDescription: "More Efficient Lead Targeting",
   },
   {
     heading: "Account Based Selling",
     content:
       "Target high-value accounts with customized sales strategies for maximum impact.",
     button: "Optimize Your Account Strategy",
+    stat: "360°",
+    statDescription: "Lead Visibility",
     subcontent: [
       {
         heading: "AI Custom Account plans",
@@ -219,18 +227,24 @@ const sections = [
     content:
       "Uncover actionable insights about your prospects and accounts to drive smarter sales decisions.",
     button: "Get Lead Insights",
+    stat: "35%",
+    statDescription: "Sales Efficiency",
   },
   {
     heading: "Lead Scoring",
     content:
       "Prioritize leads with AI-powered scoring to focus on the prospects most likely to convert.",
     button: "Improve Lead Quality",
+    stat: "35%",
+    statDescription: "Sales Efficiency",
   },
   {
     heading: "Train the Trainer",
     content:
       "Refine your AI’s capabilities to write tailored, impactful emails that resonate with your audience by training it with real-world examples and feedback.",
     button: "Enhance AI Email Writing",
+    stat: "35%",
+    statDescription: "Sales Efficiency",
   },
 ];
 
@@ -240,7 +254,7 @@ const ScrollComponent = memo(() => {
   const sectionRefs = useRef([]);
   const [viewedSections, setViewedSections] = useState(new Set());
   const [isFixed, setIsFixed] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -284,7 +298,7 @@ const ScrollComponent = memo(() => {
         ref={containerRef}
       >
         {sections.map((section, index) => (
-          <div className="sticky top-[50px] max-w-6xl bg-white h-[520px] flex justify-center pl-8 mx-10">
+          <div className="sticky top-[50px] max-w-6xl bg-white h-[520px] flex justify-center  mx-10">
             <div
               key={index}
               ref={(el) => (sectionRefs.current[index] = el)}
@@ -293,28 +307,20 @@ const ScrollComponent = memo(() => {
               {/* <div className="absolute top-[0px] left-3 w-[20px] h-[150px] bg-white"></div> */}
               <div className="w-full flex justify-between px-6 mx-10">
                 {/* Left Section - Takes 1 column */}
-                <div className="w-[300px] flex flex-col justify-start items-start gap-3">
-                  <h3 className="stretch text-[#252B37] text-[20px] font-inter font-semibold leading-8">
+                <div className="w-[320px] flex flex-col justify-start items-start gap-5">
+                  <h3 className="stretch text-[#252B37] text-[24px] font-inter font-semibold leading-8 text-nowrap">
                     {section.heading}
                   </h3>
-                  <p className="stretch text-[#535862] text-[14px] font-inter font-normal leading-6 mt-2">
+                  <p className="stretch text-[#535862] text-[16px] font-inter font-normal leading-6 mt-2">
                     {section.content}
                   </p>
-                  {section.subcontent && section.subcontent.length > 0 && (
-                    <div className="mt-2">
-                      {section.subcontent.map((sub, subIndex) => (
-                        <div key={subIndex} className="mt-2 border-b">
-                          <h4 className="text-[#207C97] text-[18px] font-inter font-semibold leading-7">
-                            {sub.heading}
-                          </h4>
-                          <p className="text-[#535862] text-[14px] font-inter font-normal leading-6 mt-1">
-                            {sub.content}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <Link to="/login">
+                  <div className="flex flex-col items-start w-3/4 text-[#207C97] gap-3">
+                    <h1 className="text-[36px] font-semibold leading-[44px] tracking-[-0.72px] bg-[#f4f9f9] pl-[5px] pr-[5px] pt-[2px] rounded-sm pb-[2px]">
+                      {section?.stat}
+                    </h1>
+                    <p>{section?.statDescription}</p>
+                  </div>
+                  {/* <Link to="/login">
                     <button class="relative mt-4 rounded-[36px] border border-[#207C97] bg-[#207C97] text-white text-sm font-medium leading-[20px] py-2 px-4 overflow-hidden group">
                       <span class="relative z-10 group-hover:text-[#207C97] transition-colors duration-300">
                         {" "}
@@ -322,7 +328,12 @@ const ScrollComponent = memo(() => {
                       </span>
                       <span class="absolute rounded-full inset-0 bg-white transform scale-0 group-hover:scale-100 transition-all duration-500 ease-out origin-bottom"></span>
                     </button>
-                  </Link>
+                  </Link> */}
+                  <CustomButton
+                    variant="secondary"
+                    text={section.button}
+                    onClick={() => navigate("/login")}
+                  />
                 </div>
 
                 {/* Right Section (Video) - Takes 2 columns */}
@@ -345,14 +356,8 @@ const ScrollComponent = memo(() => {
                 </div>
               </div>
               {/* Left Icon */}
-              {/* <div className="absolute top-[130px] left-2  flex items-center justify-center w-10 h-10  text-white rounded-full border-2  border-dashed border-gray-300 bg-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" viewBox="0 0 18 32" fill="none">
-                <path d="M9.72319 31.9994H0.783691L9.06056 16H18.0001L9.72319 31.9994Z" fill="#207C97"/>
-                <path d="M8.9395 15.9994H0L8.27687 0H17.2164L8.9395 15.9994Z" fill="#207C97"/>
-              </svg>
-              </div> */}
 
-              <div className="absolute top-[26px] md:left-[76px] lg:left-[74px] xl:left-[24px] 2xl:left-[55px] transform -translate-y-1/2 flex items-center justify-center w-[52px] h-[52px] text-white rounded-full border-2 border-dashed border-gray-300 bg-white">
+              <div className="absolute top-[25px] md:left-[76px] lg:left-[74px] xl:left-[6px] 2xl:left-[30px] transform -translate-y-1/2 flex items-center justify-center w-[52px] h-[52px] text-white rounded-full border-2 border-dashed border-gray-300 bg-white">
                 <AnimatePresence mode="wait">
                   {viewedSections.has(index) ? (
                     <motion.div

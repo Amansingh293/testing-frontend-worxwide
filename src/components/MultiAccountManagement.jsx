@@ -19,7 +19,7 @@ const MultiAccountManagement = () => {
         <img
           src={infographics}
           alt="infographics"
-          className="absolute left-[167px] top-0 m-0 p-0"
+          className="absolute left-[167px] top-0 m-0 p-0 flex-none min-w-[500px] min-h-[500px] "
         />
       </div>
     </div>

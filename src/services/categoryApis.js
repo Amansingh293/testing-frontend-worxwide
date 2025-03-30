@@ -4,7 +4,7 @@ import axiosInstance from "./axiosInstance";
 export const fetchCategories = async (signal) => {
   try {
     const { data } = await axiosInstance.get(
-      "/api/worx-squad-blog-categories",
+      "/api/worx-sales-category",
       {
         signal,
       }
@@ -19,7 +19,7 @@ export const fetchCategories = async (signal) => {
 export const fetchWhitePaperCategories = async (signal) => {
   try {
     const { data } = await axiosInstance.get(
-      "/api/worx-squad-white-paper-categories",
+      "/api/worx-sales-category",
       { signal }
     );
     return data;

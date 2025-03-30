@@ -1,33 +1,27 @@
-import { useState } from "react";
+import { motion } from "framer-motion";
 import FAQ from "../components/common/Faq";
 import Footer from "../components/common/Footer";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import SalesGrowthSection from "@/components/pricing/SalesGrowthSection";
-import Section from "@/components/common/Section";
-import Testimonials from "@/carousels/Testimonials";
-
 import SavingsWithSalesworx from "@/components/pricingPageComponents/SavingsWithSalesworx";
 import StartEmail from "@/components/pricingPageComponents/StartEmail";
 import StoppingSales from "@/components/pricingPageComponents/StoppingSales";
 import CostToInclude from "@/components/pricingPageComponents/CostToInclude";
+import Testimonials from "@/carousels/Testimonials";
 import TeamSection from "@/components/common/TeamSection";
 
 const Pricing = () => {
   return (
     <>
       <CostToInclude />
-      <div className=" flex flex-col w-4/5 items-center mx-auto gap-32 mt-5 max-w-[1200px]">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col w-4/5 items-center mx-auto gap-32 mt-5 max-w-[1200px]"
+      >
         {/* Top Heading */}
 
         {/* Pricing Section */}
-
         <SavingsWithSalesworx />
 
         <StartEmail />
@@ -37,11 +31,12 @@ const Pricing = () => {
         <StoppingSales />
 
         <Testimonials
-          buttonClasses={"xl:-ml-[70px] 2xl:-ml-[460px] "}
+          buttonClasses={"xl:-ml-[70px] "}
           heading={
             "Discover How Our Tool is Helping Teams Save Time and Boost Performance"
           }
           headingWidth={"w-[666px]"}
+          cardMargin={"xl:ml-32 2xl:ml-[310px]"}
         />
 
         <FAQ />
@@ -52,7 +47,7 @@ const Pricing = () => {
           buttonText="Book a Demo"
           onButtonClick={"handleClick"}
         />
-      </div>
+      </motion.div>
       <Footer />
     </>
   );

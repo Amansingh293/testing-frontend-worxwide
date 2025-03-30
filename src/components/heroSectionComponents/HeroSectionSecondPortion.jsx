@@ -7,7 +7,7 @@ import FourthComponent from "./SecondPortionComponents/FourthComponent";
 import FifthComponent from "./SecondPortionComponents/FifthComponent";
 import SixthComponent from "./SecondPortionComponents/SixthComponent";
 
-const HeroSectionSecondPortion = () => {
+const   HeroSectionSecondPortion = () => {
   return (
     <div className="w-full border-[1px] rounded-[24px]  mt-16 p-12  overflow-hidden">
       <FirstComponent />

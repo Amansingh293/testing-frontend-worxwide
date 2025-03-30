@@ -86,10 +86,10 @@ const SdrCalculator = () => {
             thumbColor="#207C97" // Customize thumb color
             thumbSize="15px"
             className="w-[480px]"
-            value={[costObject?.adminExpense]}
+            value={[costObject?.b2bData]}
             onValueChange={(value) => {
               setCostObject((prev) => {
-                let temp = { ...prev, adminExpense: value };
+                let temp = { ...prev, b2bData: value };
                 return temp;
               });
             }}
@@ -108,10 +108,10 @@ const SdrCalculator = () => {
             thumbColor="#207C97" // Customize thumb color
             thumbSize="15px"
             className="w-[480px]"
-            value={[costObject?.b2bData]}
+            value={[costObject?.adminExpense]}
             onValueChange={(value) => {
               setCostObject((prev) => {
-                let temp = { ...prev, b2bData: value };
+                let temp = { ...prev, adminExpense: value };
                 return temp;
               });
             }}

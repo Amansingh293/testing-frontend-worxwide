@@ -4,9 +4,12 @@ import message from "../../assets/message.gif";
 import noti from "../../assets/noti.gif";
 import book from "../../assets/book.gif";
 import CustomButton from "../CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const SalesGrowthSection = () => {
-  return ( 
+  const navigate = useNavigate();
+
+  return (
     <div className=" flex flex-col items-center gap-16 self-stretch">
       <h1 className="text-[#252B37] text-center font-inter text-[30px] font-medium leading-[38px]">
         Now Achieve Greater Efficiency and Savings
@@ -123,10 +126,9 @@ const SalesGrowthSection = () => {
       <CustomButton
         variant="secondary"
         text={"Try for free"}
-        onClick={"onButtonClick"}
+        onClick={() => navigate("/login")}
         customClass={"mt-3 font-normal"}
       />{" "}
-    
     </div>
   );
 };

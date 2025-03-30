@@ -2,8 +2,10 @@ import React from "react";
 
 import FeaturesList from "./common/FeaturesLists";
 import CustomButton from "./CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const AiSalesIntelligence = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col gap-10 p-8 bg-white rounded-[16px] w-full">
       {" "}
@@ -21,7 +23,7 @@ const AiSalesIntelligence = () => {
         <CustomButton
           variant="secondary"
           text={"See in Action"}
-          onClick={"onButtonClick"}
+          onClick={() => navigate("/login")}
         />{" "}
       </div>
     </div>

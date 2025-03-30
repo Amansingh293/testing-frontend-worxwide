@@ -2,7 +2,7 @@ import axiosInstance from "./axiosInstance";
 
 // Fetch white papers with optional category filter
 export const fetchWhitePapers = async (category = "", page = 1, signal) => {
-  let url = `/api/worx-squad-white-papers?populate=*&pagination[page]=${page}&pagination[pageSize]=6`;
+  let url = `/api/worx-sales-whitepapers?populate=*&pagination[page]=${page}&pagination[pageSize]=6`;
   if (category && category !== "All") {
     const encodedCategory = encodeURIComponent(category);
     url += `&filters[categories][name][$containsi]=${encodedCategory}`;
@@ -19,7 +19,7 @@ export const fetchWhitePapers = async (category = "", page = 1, signal) => {
 export const fetchWhitepaperBySlug = async (slug, signal) => {
   try {
     const { data } = await axiosInstance.get(
-      `/api/worx-squad-white-papers?filters[slug][$eq]=${slug}&populate=*`,
+      `/api/worx-sales-whitepapers?filters[slug][$eq]=${slug}&populate=*`,
       { signal }
     );
     return data;

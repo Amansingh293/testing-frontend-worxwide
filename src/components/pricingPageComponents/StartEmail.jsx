@@ -2,8 +2,12 @@ import React, { memo } from "react";
 import dp from "@/assets/pricingpagedp.png";
 import { Input } from "../ui/input";
 import CustomButton from "../CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const StartEmail = memo(() => {
+
+  const navigate = useNavigate();
+  
   return (
     <div className="flex p-12 items-center justify-center font-inter bg-white w-full rounded-[16px]">
       <div className="flex items-start gap-8 w-[742px] justify-center">
@@ -49,8 +53,8 @@ const StartEmail = memo(() => {
               <CustomButton
                 variant="secondary"
                 text={"Start for free"}
-                onClick={"onButtonClick"}
-                customClass={" rounded-[10px] font-normal px-16  !h-11"}
+                onClick={()=>navigate("/login")}
+                customClass={" rounded-[6px] font-normal px-16  !h-11"}
               />{" "}
             </div>
             <p className="text-[#A4A7AE] text-[14px] leading-[20px] ml-auto">

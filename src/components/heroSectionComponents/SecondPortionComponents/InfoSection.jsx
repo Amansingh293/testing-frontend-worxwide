@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const InfoSection = ({
   title,
@@ -10,6 +11,9 @@ const InfoSection = ({
   onButtonClick,
   className,
 }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className={"flex flex-col font-inter w-80 gap-9 " + className}>
       <div className="flex flex-col gap-4 items-start">
@@ -26,7 +30,7 @@ const InfoSection = ({
         <CustomButton
           variant="secondary"
           text={buttonText}
-          onClick={onButtonClick}
+          onClick={()=>navigate("/login")}
         />
       </div>
     </div>

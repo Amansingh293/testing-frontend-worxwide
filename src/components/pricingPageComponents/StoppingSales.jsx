@@ -11,13 +11,34 @@ import {
 } from "../ui/select";
 import CustomButtonExtended from "../common/CustomButtonExtended";
 import TeamSection from "../common/TeamSection";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const StoppingSales = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentScreen, setCurrentScreen] = useState("form");
-
+  const [modalHoverButton, setModalHoverButton] = useState(false);
   const divRef = useRef();
-
+  const [teamSize, setTeamSize] = useState("");
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      teamSize: "",
+      phoneNumber: "",
+      countryCode: "US",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().required("Name is required"),
+      email: Yup.string().email("Invalid email").required("Email is required"),
+      teamSize: Yup.string().required("Team size is required"),
+      phoneNumber: Yup.string().required("Phone number is required"),
+    }),
+    onSubmit: (values) => {
+      console.log("Form submitted with values:", values);
+      setCurrentScreen("tick");
+    },
+  });
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -118,31 +139,33 @@ const StoppingSales = () => {
         title="Tailored for team of all sizes"
         description="Whether you're running a small campaign or scaling up to enterprise-level outreach, our flexible pricing makes it affordable. Contact our sales team to learn more."
         buttonText="Get Volume Pricing"
-        onButtonClick={handleClick}
+        onButtonClick={() => {
+          setIsModalOpen(true);
+        }}
       />
       {isModalOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+          className="fixed inset-0  flex items-start justify-center bg-black bg-opacity-50 z-0 pt-80"
           onClick={closeModal}
         >
           <div
-            className="bg-white rounded-lg shadow-lg md:flex md:flex-row overflow-hidden transform transition-all"
+            className="bg-white rounded-[24px] shadow-lg md:flex md:flex-row overflow-hidden transform transition-all"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
             ref={divRef}
           >
             <div className="flex items-center justify-center">
-              <div className="bg-white p-6 md:p-8 rounded-lg shadow-lg max-w-md w-full">
+              <div className="bg-white p-6 rounded-[24px] shadow-lg w-[560px] min-hh-[592px] flex flex-col gap-5">
                 {currentScreen === "form" && (
                   <>
                     <h2 className="text-2xl font-bold text-gray-900">
                       Get Custom Volume Pricing
                     </h2>
-                    <p className="text-gray-600 text-sm mt-2">
+                    <p className="text-gray-600 text-[16px] mt-2">
                       Looking for bulk pricing? Share a few details, and we'll
                       provide a tailored quote that suits your team’s needs.
                     </p>
                     <form
-                      onSubmit={(e) => e.preventDefault()}
+                      onSubmit={formik.handleSubmit}
                       className="mt-6 space-y-4"
                     >
                       {/* Name Input */}
@@ -152,9 +175,18 @@ const StoppingSales = () => {
                         </label>
                         <Input
                           type="text"
+                          name="name"
                           placeholder="Your name"
                           className="mt-1"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.name}
                         />
+                        {formik.touched.name && formik.errors.name && (
+                          <p className="text-red-500 text-xs">
+                            {formik.errors.name}
+                          </p>
+                        )}
                       </div>
 
                       {/* Email Input */}
@@ -164,9 +196,18 @@ const StoppingSales = () => {
                         </label>
                         <Input
                           type="email"
+                          name="email"
                           placeholder="you@company.com"
                           className="mt-1"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.email}
                         />
+                        {formik.touched.email && formik.errors.email && (
+                          <p className="text-red-500 text-xs">
+                            {formik.errors.email}
+                          </p>
+                        )}
                       </div>
 
                       {/* Team Size Dropdown */}
@@ -174,11 +215,16 @@ const StoppingSales = () => {
                         <label className="text-gray-700 text-sm font-medium">
                           Team Size
                         </label>
-                        <Select>
+                        <Select
+                          value={formik.values.teamSize}
+                          onValueChange={(value) =>
+                            formik.setFieldValue("teamSize", value)
+                          }
+                        >
                           <SelectTrigger className="mt-1">
                             <SelectValue placeholder="Select team size from dropdown" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="z-50">
                             <SelectItem value="small">1-10 Members</SelectItem>
                             <SelectItem value="medium">
                               11-50 Members
@@ -186,6 +232,11 @@ const StoppingSales = () => {
                             <SelectItem value="large">51+ Members</SelectItem>
                           </SelectContent>
                         </Select>
+                        {formik.touched.teamSize && formik.errors.teamSize && (
+                          <p className="text-red-500 text-xs">
+                            {formik.errors.teamSize}
+                          </p>
+                        )}
                       </div>
 
                       {/* Phone Number Input */}
@@ -193,48 +244,83 @@ const StoppingSales = () => {
                         <label className="text-gray-700 text-sm font-medium">
                           Phone number
                         </label>
-                        <div className="flex items-center gap-2 border border-gray-300 rounded-md p-2 mt-1">
-                          <Select>
-                            <SelectTrigger className="w-20">
-                              <SelectValue placeholder="US" />
+                        <div className="flex items-center gap-2 border border-gray-300 rounded-md p-2 mt-1 h-10">
+                          <Select
+                            onValueChange={(value) =>
+                              formik.setFieldValue("countryCode", value)
+                            }
+                            value={formik.values.countryCode}
+                            className="!border-none focus:ring-0 focus:outline-none"
+                          >
+                            <SelectTrigger className="w-20 !border-none bg-transparent shadow-none focus:ring-0 focus:outline-none">
+                              <SelectValue placeholder="Select" />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="h-fit">
                               <SelectItem value="US">US +1</SelectItem>
                               <SelectItem value="IN">IN +91</SelectItem>
                               <SelectItem value="UK">UK +44</SelectItem>
                             </SelectContent>
                           </Select>
+                          {formik.touched.countryCode &&
+                            formik.errors.countryCode && (
+                              <p className="text-red-500 text-xs mt-1">
+                                {formik.errors.countryCode}
+                              </p>
+                            )}
+
                           <Input
                             type="tel"
+                            name="phoneNumber"
                             placeholder="+1 (555) 000-0000"
-                            className="flex-1 border-none"
+                            className="flex-1 border-none h-8"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.phoneNumber}
                           />
                         </div>
+                        {formik.touched.phoneNumber &&
+                          formik.errors.phoneNumber && (
+                            <p className="text-red-500 text-xs">
+                              {formik.errors.phoneNumber}
+                            </p>
+                          )}
                       </div>
 
                       {/* Submit Button */}
-                      {/* <Button
-                    onClick={() => setCurrentScreen('tick')}
-                    className="w-full mt-4 bg-gray-600 text-white hover:bg-gray-700">
-                    Submit Request →
-                  </Button> */}
                       <button
-                        onClick={() => setCurrentScreen("tick")}
-                        className="flex p-[12px_16px] justify-center items-center gap-1 self-stretch w-full rounded-[36px] border border-[#207C97] bg-[#717680] text-white font-inter text-sm font-medium leading-[20px] hover:bg-white hover:text-[#207C97] "
+                        type="submit"
+                        className="flex p-[12px_16px] justify-center items-center gap-1 self-stretch w-full rounded-[36px] border border-[#207C97] bg-[#717680] text-white font-inter text-sm font-medium leading-[20px] hover:bg-white hover:text-[#207C97]"
+                        onMouseEnter={() => setModalHoverButton(true)}
+                        onMouseLeave={() => setModalHoverButton(false)}
                       >
                         Submit Request{" "}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                        >
-                          <path
-                            d="M2 8.98756L14.0265 8.98756L9.35539 4.43159L10.8231 3L18 10L10.8231 17L9.35539 15.5684L14.0265 11.0124L2 11.0124L2 8.98756Z"
-                            fill="#207C97"
-                          />
-                        </svg>
+                        {modalHoverButton ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <path
+                              d="M2 8.98756L14.0265 8.98756L9.35539 4.43159L10.8231 3L18 10L10.8231 17L9.35539 15.5684L14.0265 11.0124L2 11.0124L2 8.98756Z"
+                              fill="#207C97"
+                            />
+                          </svg>
+                        ) : (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 20 20"
+                            fill="none"
+                          >
+                            <path
+                              d="M2 8.98756L14.0265 8.98756L9.35539 4.43159L10.8231 3L18 10L10.8231 17L9.35539 15.5684L14.0265 11.0124L2 11.0124L2 8.98756Z"
+                              fill="white"
+                            />
+                          </svg>
+                        )}
                       </button>
                     </form>
                   </>

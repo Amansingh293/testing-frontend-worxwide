@@ -3,8 +3,11 @@ import CustomButton from "./CustomButton";
 import old from "@/assets/old.png";
 import male from "@/assets/male.png";
 import female from "@/assets/female.png";
+import { useNavigate } from "react-router-dom";
 
 const JoinPartnerProgram = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="p-[34px] flex gap-12 rounded-[32px] bg-white items-center h-[489px] ">
       <div className="flex flex-col gap-8 w-1/2">
@@ -21,16 +24,20 @@ const JoinPartnerProgram = () => {
           <CustomButton
             variant="secondary"
             text={"Get in touch"}
-            onClick={"onButtonClick"}
-            customClass={"rounded-[12px]"}
+            onClick={() => navigate("/login")}
+            customClass={"rounded-[6px]"}
           />{" "}
         </div>
       </div>
 
       <div className="p-0 relative h-full">
         <img src={old} alt="old" />
-        <img src={male} alt="male" className="absolute top-[223px]"/>
-        <img src={female} alt="female" className="absolute top-[115px] left-[258px]"/>
+        <img src={male} alt="male" className="absolute top-[223px]" />
+        <img
+          src={female}
+          alt="female"
+          className="absolute top-[115px] left-[258px]"
+        />
       </div>
     </div>
   );

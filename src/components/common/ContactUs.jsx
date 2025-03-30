@@ -14,6 +14,7 @@ import avatar from "@/assets/Avatar.png";
 import avatar1 from "@/assets/Avatar1.png";
 import avatar2 from "@/assets/Avatar2.png";
 import CustomButton from "../CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const faqs = [
   {
@@ -46,6 +47,7 @@ const faqs = [
 
 export default function ContactUs() {
   const [openIndex, setOpenIndex] = useState(null);
+  const navigate = useNavigate();
 
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -167,8 +169,8 @@ export default function ContactUs() {
           <CustomButton
             variant="secondary"
             text={"Get in touch"}
-            onClick={"onButtonClick"}
-            customClass={"rounded-[12px]"}
+            onClick={() => navigate("/login")}
+            customClass={"rounded-[6px]"}
           />{" "}
         </div>
       </div>

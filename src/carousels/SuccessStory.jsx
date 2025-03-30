@@ -1,5 +1,6 @@
 import CustomButton from "@/components/CustomButton";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const caseStudies = [
   {
@@ -69,6 +70,17 @@ export default function SuccessStory({ className }) {
 }
 
 const CaseStudiesCarousel = ({ caseStudies }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const navigate = useNavigate();
+  
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
   const containerRef = useRef(null);
   const scrollerRef = useRef(null);
   return (
@@ -82,7 +94,9 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
           <div className="flex items-center h-[550px]  w-full overflow-x-hidden">
             <ul
               ref={scrollerRef}
-              className="flex w-full h-[400px] shrink-0 gap-[0px] animate-scroll hover:[animation-play-state:paused] "
+              className={`flex w-full h-[400px] shrink-0 gap-[0px] animate-scroll ${
+                hovered ? "hover:[animation-play-state:paused]" : ""
+              } `}
             >
               {caseStudies.map((item, index) => (
                 <li
@@ -94,7 +108,11 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
                   <div className="absolute top-20 w-[400px] h-[200px] inset-0 rounded-full bg-[conic-gradient(from_90deg_at_0%_50%,#207C97_0deg,#E6F9FF_360deg)] blur-[97px] opacity-0 group-hover:opacity-100 transition duration-300 -z-10"></div>
 
                   {/* Card with Fixed Height */}
-                  <div className="w-[291px] h-[335px] flex flex-col justify-between border rounded-lg  bg-white text-center z-10">
+                  <div
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className="w-[291px] h-[335px] flex flex-col justify-between border rounded-lg  bg-white text-center z-10"
+                  >
                     {/* Card Content */}
                     <div className="flex-grow ">
                       <h3 className="p-6 text-[#414651] text-lg font-inter font-normal leading-[28px] text-left border-b">
@@ -126,7 +144,7 @@ const CaseStudiesCarousel = ({ caseStudies }) => {
           <CustomButton
             variant="secondary"
             text={"Start Your Success Journey"}
-            onClick={"onButtonClick"}
+            onClick={()=>navigate("/login")}
           />{" "}
         </div>
       </div>

@@ -18,6 +18,15 @@ body {
   animation: spinner 1.5s linear infinite;
 }
 
+.swiper-slide {
+  opacity: 0.4; /* Dim non-focused slides */
+  transition: opacity 0.3s ease;
+}
+
+.swiper-slide.swiper-slide-active {
+  opacity: 1; /* Keep focused slide fully visible */
+}
+
 @keyframes spinner {
   100% {
     transform: rotate(360deg);
@@ -57,4 +66,22 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.custom-calendly {
+  display: flex;
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-calendly-popupchild {
+  height: 103% !important;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

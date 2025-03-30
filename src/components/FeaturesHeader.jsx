@@ -3,8 +3,10 @@ import Salesworx from "@/assets/Salesworx.gif";
 import Section from "@/components/common/Section";
 import FAQ from "@/components/common/Faq";
 import { Link } from "react-router-dom";
+import CustomButton from "./CustomButton";
+import CustomButtonCorrect from "./common/CustomButtonCorrect";
 
-const FeaturesHeader = ({handleClick , isClicked}) => {
+const FeaturesHeader = ({ handleClick, isClicked }) => {
   return (
     <div className="text-center">
       <div className="flex flex-col items-center text-center">
@@ -25,46 +27,14 @@ const FeaturesHeader = ({handleClick , isClicked}) => {
         and hyper-personalization.
       </p>
       <Link to="/login">
-        <button
-          onClick={handleClick}
-          className={`group relative mt-4 rounded-[36px] border border-[#207C97] 
-                     text-white text-sm font-medium leading-[20px] py-[12px] px-[16px] 
-                     overflow-hidden transition-colors duration-300 
-                     ${
-                       isClicked
-                         ? "bg-[#ADD8E6] border-[#87CEEB]"
-                         : "bg-[#207C97]"
-                     }`}
-        >
-          <div className="flex gap-1 items-center relative z-10">
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-[#207C97]">
-              Get Started Today
-            </span>
-
-            {/* SVG with Hover Effects */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="21"
-              height="20"
-              viewBox="0 0 21 20"
-              fill="none"
-              className="transition-transform duration-300 group-hover:-rotate-[50deg] relative z-10"
-            >
-              <path
-                d="M2.5 8.98756L14.5265 8.98756L9.85539 4.43159L11.3231 3L18.5 10L11.3231 17L9.85539 15.5684L14.5265 11.0124L2.5 11.0124L2.5 8.98756Z"
-                className="fill-white transition-colors duration-700 group-hover:fill-[#207C97]"
-              />
-            </svg>
-          </div>
-
-          {/* Background Hover Effect */}
-          <span
-            className="absolute rounded-full h-[300px] w-[250px] bg-white 
-            scale-0 group-hover:scale-100 
-            transition-transform duration-1000 ease-[cubic-bezier(0.4, 0, 0.2, 1)] 
-            origin-bottom inset-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
-          ></span>
-        </button>
+        {/* <CustomButton
+          variant="secondary"
+          text={"Get Started Today"}
+          onClick={"onButtonClick"}
+          showIcon={true}
+        />{" "} */}
+        <CustomButtonCorrect text="Get Started Today"/>
+        
       </Link>
     </div>
   );

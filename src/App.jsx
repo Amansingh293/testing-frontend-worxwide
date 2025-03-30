@@ -81,7 +81,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "blogdetail",
+        path: "blogdetail/:slug",
         element: (
           <Suspense fallback={<Loader />}>
             <BlogDetails />
@@ -97,7 +97,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "whitepaperdetail",
+        path: "whitepaperdetail/:slug",
         element: (
           <Suspense fallback={<Loader />}>
             <WhitepaperDetail />

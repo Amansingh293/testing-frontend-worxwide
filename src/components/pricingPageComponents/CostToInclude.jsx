@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import rocket from "@/assets/rocket.gif";
 import target from "@/assets/target.gif";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import CustomButtonCorrect from "../common/CustomButtonCorrect";
 
 const CostToInclude = () => {
   const [isClicked, setIsClicked] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
     <div className="relative z-0 h-fit w-full">
@@ -26,9 +29,9 @@ const CostToInclude = () => {
             <div className="absolute top-[20%] -left-[80px] w-[240px] h-[260px] inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#207C97_0deg,#E6F9FF_360deg)] blur-[80px] -z-10"></div>
             <div className="absolute top-[90px] left-[650px] w-[240px] h-[260px] inset-0 rounded-full bg-[conic-gradient(from_90deg_at_50%_50%,#207C97_0deg,#E6F9FF_360deg)] blur-[80px] -z-10"></div>
 
-            <div className="flex justify-center item-center rounded-[12px] bg-white p-4 pt-[28px] pb-[28px]">
-              <div className="bg-white ml-4 rounded-lg p-10 w-full max-w-sm border border-r-2 flex flex-col gap-8 ">
-                <div className="flex gap-2 m-2">
+            <div className="flex justify-center item-center rounded-[12px] p-4 bg-white pt-[28px] pb-[28px]">
+              <div className="bg-white ml-4 rounded-lg w-full max-w-sm border border-r-2 flex flex-col justify-around gap-10 ">
+                <div className="flex gap-2 m-2 pt-9 pb-0">
                   <img
                     src={target}
                     alt="rocket"
@@ -50,7 +53,8 @@ const CostToInclude = () => {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-2 mt-[58px] m-2">
+                <hr className="w-full" />
+                <div className="flex gap-2  m-2 p-4 pt-0 pb-10">
                   <img
                     src={rocket}
                     alt="target"
@@ -89,7 +93,7 @@ const CostToInclude = () => {
                   <h3 className="text-[#3D261A] font-inter text-lg font-semibold leading-[28px] mb-[24px]">
                     What's Included:
                   </h3>
-                  <ul className="space-y-6 text-[#3D261A] font-inter text-sm font-normal leading-[20px]">
+                  <ul className="space-y-6 text-[#3D261A] font-inter text-sm font-normal leading-[20px] mb-3">
                     <li className="flex items-center gap-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -184,47 +188,11 @@ const CostToInclude = () => {
                       View complete feature list
                     </p>
                   </ul>
-                  <Link to="/login">
-                    <button
-                      onClick={"handleClick"}
-                      className={`group relative mt-8 rounded-[36px] border border-[#207C97] 
-                      text-white text-sm font-medium leading-[20px] py-[12px] px-[16px] 
-                   overflow-hidden transition-colors duration-300 
-                   ${
-                     isClicked
-                       ? "bg-[#ADD8E6] border-[#87CEEB]"
-                       : "bg-[#207C97]"
-                   }`}
-                    >
-                      <div className="flex gap-1 items-center relative z-10">
-                        <span className="relative z-10 transition-colors duration-300 group-hover:text-[#207C97]">
-                          Start for free*
-                        </span>
 
-                        {/* SVG with Hover Effects */}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="21"
-                          height="20"
-                          viewBox="0 0 21 20"
-                          fill="none"
-                          className="transition-transform duration-300 group-hover:-rotate-[50deg] relative z-10"
-                        >
-                          <path
-                            d="M2.5 8.98756L14.5265 8.98756L9.85539 4.43159L11.3231 3L18.5 10L11.3231 17L9.85539 15.5684L14.5265 11.0124L2.5 11.0124L2.5 8.98756Z"
-                            className="fill-white transition-colors duration-700 group-hover:fill-[#207C97]"
-                          />
-                        </svg>
-                      </div>
-
-                      {/* Background Hover Effect */}
-                      <span
-                        className="absolute rounded-full inset-0 bg-white 
-                      transform scale-0 group-hover:scale-100 
-                      transition-transform duration-500 ease-out origin-bottom z-0"
-                      ></span>
-                    </button>
-                  </Link>
+                  <CustomButtonCorrect
+                    text="Start for free*"
+                    onClick={() => navigate("/login")}
+                  />
                 </div>
               </div>
             </div>

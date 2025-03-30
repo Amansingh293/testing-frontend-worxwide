@@ -10,8 +10,12 @@ import smallline from "@/assets/smallstraightline.png";
 import PersonCard from "../common/PersonCard";
 import DropEffect from "../common/dropEffectAnimation/DropEffect";
 import CustomButton from "../CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const SalesIntelligence = () => {
+
+  const navigate = useNavigate();
+  
   return (
     <div className="flex flex-col gap-10 pl-8 pr-1 pt-12 pb-12 font-inter rounded-3xl bg-white w-full">
       <div className="flex flex-col w-full items-center gap-4">
@@ -231,7 +235,7 @@ const SalesIntelligence = () => {
         <CustomButton
           variant="secondary"
           text={"Start for free*"}
-          onClick={"onButtonClick"}
+          onClick={()=>navigate("/login")}
           showIcon={true}
         />{" "}
       </div>

@@ -248,7 +248,7 @@ const Footer = () => {
         </footer>
         <div className="p-4 border-t-2">
           <p className="text-center text-gray-500 text-sm">
-            © Copyright 2024, All Rights Reserved by Salesworx.ai
+            © Copyright 2025, All Rights Reserved by Salesworx.ai
           </p>
         </div>
       </div>

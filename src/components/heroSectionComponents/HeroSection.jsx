@@ -147,13 +147,7 @@ const HeroSection = () => {
       </div>
       <Heading />
       <div class="bg-white ml-auto mr-auto w-fit ">
-        {/* <!-- Hero Section --> */}
-
-        {/* <RightFit /> */}
-
         <HeroSectionSecondPortion />
-        {/* <div className="flex flex-col justify-center items-center p-8">
-      </div> */}
       </div>
     </>
   );
