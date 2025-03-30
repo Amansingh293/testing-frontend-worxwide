@@ -5,6 +5,7 @@ const BookDemo = () => {
   const handleOpenCalendly = () => {
     if (window.Calendly) {
       document.body.classList.add("no-scroll");
+
       window.Calendly.initPopupWidget({
         url: "https://calendly.com/salesworx-ai/demo?hide_gdpr_banner=1&primary_color=207c97",
       });
@@ -13,12 +14,20 @@ const BookDemo = () => {
         const calendlyPopup = document.querySelector(".calendly-popup");
         if (calendlyPopup) {
           calendlyPopup.parentElement.classList.add("custom-calendly");
-          calendlyPopup.children[0]?.classList.add("custom-calendly-popupchild");
-          console.log(calendlyPopup.parentElement);
         }
-      }, 100); // Small timeout to ensure the popup is mounted
+
+        // Monitor the Calendly close button
+        const monitorCloseButton = setInterval(() => {
+          const closeButton = document.querySelector(".calendly-popup-close");
+          if (closeButton) {
+            closeButton.addEventListener("click", () => {
+              document.body.classList.remove("no-scroll");
+              clearInterval(monitorCloseButton); // Stop checking after adding the event
+            });
+          }
+        }, 500);
+      }, 100);
     } else {
-      document.body.classList.remove("no-scroll");
       alert("Calendly script is still loading. Please try again.");
     }
   };
