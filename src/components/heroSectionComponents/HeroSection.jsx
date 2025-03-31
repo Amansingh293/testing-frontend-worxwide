@@ -146,7 +146,7 @@ const HeroSection = () => {
         </div>
       </div>
       <Heading />
-      <div class="bg-white ml-auto mr-auto w-fit ">
+      <div class="bg-white mx-auto w-fit rounded-[24px] shadow-[2px_2px_24px_0px_rgba(0,0,0,0.04)]">
         <HeroSectionSecondPortion />
       </div>
     </>

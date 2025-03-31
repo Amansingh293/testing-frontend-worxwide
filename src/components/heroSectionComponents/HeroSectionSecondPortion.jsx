@@ -9,7 +9,7 @@ import SixthComponent from "./SecondPortionComponents/SixthComponent";
 
 const   HeroSectionSecondPortion = () => {
   return (
-    <div className="w-full border-[1px] rounded-[24px]  mt-16 p-12  overflow-hidden">
+    <div className="w-full rounded-[24px]  mt-16 p-12  overflow-hidden">
       <FirstComponent />
       <SecondComponent />
       <ThirdComponent />
