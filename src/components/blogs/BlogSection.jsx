@@ -70,7 +70,7 @@ const BlogSection = () => {
       link: "/blog/6",
       image: Frame6,
     },
-  ];
+  ]; 
   const navigate = useNavigate();
 
   const [blogsData, setBlogsData] = useState();
