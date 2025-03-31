@@ -40,27 +40,11 @@ const WhitepapperSection = () => {
   }, []);
 
   return (
-    <>
-      {/* ✅ Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Article",
-          headline: "Unlock Insights That Transform Your Business",
-          author: {
-            "@type": "Person",
-            name: "Phoenix Baker",
-          },
-          datePublished: "2022-01-19",
-          dateModified: "2022-01-19",
-          publisher: {
-            "@type": "Organization",
-            name: "YourCompany",
-          },
-        })}
-      </script>
+    <div className="relative">
+ 
+      <div className="min-h-screenn-blogs h-[900px] absolute z-10 w-full "></div>
 
-      <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto ">
+      <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto relative z-20 bg-[#fcfcfc]">
         <header className="text-center mb-20">
           <h1 className="text-3xl font-bold text-gray-800">
             Unlock Insights That Transform Your Business
@@ -153,7 +137,7 @@ const WhitepapperSection = () => {
 
       {/* ✅ Footer */}
       <Footer />
-    </>
+    </div>
   );
 };
 

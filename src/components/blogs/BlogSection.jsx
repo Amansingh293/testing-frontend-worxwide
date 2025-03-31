@@ -70,7 +70,7 @@ const BlogSection = () => {
       link: "/blog/6",
       image: Frame6,
     },
-  ]; 
+  ];
   const navigate = useNavigate();
 
   const [blogsData, setBlogsData] = useState();
@@ -95,7 +95,7 @@ const BlogSection = () => {
   }, []);
 
   return (
-    <>
+    <div className="relative">
       {/* ✅ SEO Metadata */}
       <Helmet>
         <title>Sales Strategies and Insights | Blog</title>
@@ -114,9 +114,9 @@ const BlogSection = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
       </Helmet>
-
+    <div className="min-h-screenn-blogs h-[900px] absolute z-10 w-full "></div>
       {/* ✅ Blog Section */}
-      <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto bg-white font-inter">
+      <section className="py-12 px-6 lg:px-20 max-w-6xl mx-auto bg-[#fcfcfc] font-inter relative z-20">
         <header className="text-center mb-20">
           <h1 className="text-3xl font-bold text-gray-800">
             Insights to Elevate Your Sales Game
@@ -156,7 +156,7 @@ const BlogSection = () => {
         </div>
 
         {/* ✅ Blog Grid */}
-        <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
+        <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2 ">
           {blogsData?.map((blog, index) => {
             return (
               <Link to={`/blogdetail/${blog?.slug}`} key={index}>
@@ -214,7 +214,7 @@ const BlogSection = () => {
 
       {/* ✅ Footer */}
       <Footer />
-    </>
+    </div>
   );
 };
 

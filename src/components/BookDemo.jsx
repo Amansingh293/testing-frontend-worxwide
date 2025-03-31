@@ -14,6 +14,7 @@ const BookDemo = () => {
         const calendlyPopup = document.querySelector(".calendly-popup");
         if (calendlyPopup) {
           calendlyPopup.parentElement.classList.add("custom-calendly");
+          calendlyPopup.children[0].classList.add("custom-calendly-popupchild");
         }
 
         // Monitor the Calendly close button
@@ -22,7 +23,7 @@ const BookDemo = () => {
           if (closeButton) {
             closeButton.addEventListener("click", () => {
               document.body.classList.remove("no-scroll");
-              clearInterval(monitorCloseButton); // Stop checking after adding the event
+              clearInterval(monitorCloseButton);
             });
           }
         }, 500);

@@ -40,9 +40,9 @@ const CustomButtonExtended = memo(
 
         {/* Background Hover Effect */}
         <span
-          className="absolute rounded-full h-[300px] w-[250px] bg-[#207C97] 
+          className="absolute rounded-full h-[300px] w-[250px] bg-[#207C97] bg-opacity-1
             scale-0 group-hover:scale-100 
-            transition-transform duration-1000 ease-[cubic-bezier(0.4, 0, 0.2, 1)] 
+            transition-transform duration-700 ease-[cubic-bezier(0.4, 0, 0.2, 1)] 
             origin-bottom inset-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
         ></span>
       </button>
