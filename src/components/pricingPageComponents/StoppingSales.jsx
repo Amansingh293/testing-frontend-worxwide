@@ -60,6 +60,9 @@ const StoppingSales = () => {
   useEffect(() => {
     if (isModalOpen) {
       scrollToDiv();
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
     }
   }, [isModalOpen]);
 
@@ -145,7 +148,7 @@ const StoppingSales = () => {
       />
       {isModalOpen && (
         <div
-          className="fixed inset-0  flex items-start justify-center bg-black bg-opacity-50 z-0 pt-80"
+          className="fixed inset-0 flex items-start justify-center bg-black bg-opacity-70 z-50 pt-20 2xl:pt-48"
           onClick={closeModal}
         >
           <div
@@ -389,12 +392,12 @@ const StoppingSales = () => {
               </div>
             </div>
           </div>
-          <CustomButton
+          {/* <CustomButton
             variant="secondary"
             text={"Get Started"}
             onClick={"onButtonClick"}
             customClass={"mt-3"}
-          />{" "}
+          />{" "} */}
         </div>
       )}
     </div>

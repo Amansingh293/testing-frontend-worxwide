@@ -32,7 +32,7 @@ const testimonials = [
 ];
 
 const Testimonials = memo(
-  ({ buttonClasses, heading, headingWidth, customClass ,cardMargin}) => {
+  ({ buttonClasses, heading, headingWidth, customClass, cardMargin }) => {
     const [api, setApi] = useState();
     const [current, setCurrent] = useState(0);
 
@@ -65,7 +65,7 @@ const Testimonials = memo(
         <Carousel setApi={setApi} className="w-screen">
           <CarouselContent
             className={
-              "flex h-full gap-x-2 w-[85%] " +
+              "flex h-full gap-x-2 w-[85%]  " +
               (cardMargin != null ? cardMargin : "ml-32")
             }
           >
@@ -74,36 +74,38 @@ const Testimonials = memo(
                 key={idx}
                 className=" basis-auto flex justify-center overflow-hidden"
               >
-                <Card
-                  className="font-inter p-0 relative w-[720px] h-[415px] text-white rounded-[12px] shadow-lg flex justify-center gap-20 items-center bg-cover bg-[#207C97] overflow-hidden"
+                <div
+                  className="relative z-10 w-full h-full bg-cover bg-center overflow-hidden rounded-[12px] 2xl:mr-12"
                   style={{
                     backgroundImage: `url(${Rectangle})`,
                   }}
                 >
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="bottom-[140px] left-[90px] w-32 h-32 rounded-full mb-4 ml-16"
-                  />
+                  <Card className="font-inter p-0 z-0 relative bg-opacity-0 w-[720px] h-[415px] text-white rounded-[12px] shadow-lg flex justify-center gap-20 items-center bg-cover bg-[#207C97] overflow-hidden">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="bottom-[140px] left-[90px] w-32 h-32 rounded-full mb-4 ml-16"
+                    />
 
-                  <div className="top-[100px] gap-9 right-8 z-10 w-[400px] flex flex-col text-left p-2">
-                    <h1 className="font-bold text-[20px] leading-[30px] italic">
-                      2x More Deals with Less Effort.
-                    </h1>
-                    <p className="mb-4 stretch text-white text-[16px] font-normal leading-[24px]">
-                      {testimonial.testimonial}
-                    </p>
-
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-white text-[18px] font-bold leading-[28px]">
-                        {testimonial.name}
-                      </h3>
-                      <p className="text-xs leading-[20px] font-normal">
-                        {testimonial.role}
+                    <div className="top-[100px] gap-9 right-8 z-10 w-[400px] flex flex-col text-left p-2">
+                      <h1 className="font-bold text-[20px] leading-[30px] italic">
+                        2x More Deals with Less Effort.
+                      </h1>
+                      <p className="mb-4 stretch text-white text-[16px] font-normal leading-[24px]">
+                        {testimonial.testimonial}
                       </p>
+
+                      <div className="flex flex-col gap-2">
+                        <h3 className="text-white text-[18px] font-bold leading-[28px]">
+                          {testimonial.name}
+                        </h3>
+                        <p className="text-xs leading-[20px] font-normal">
+                          {testimonial.role}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>

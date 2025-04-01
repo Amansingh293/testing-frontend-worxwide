@@ -30,7 +30,7 @@ const Footer = () => {
     <>
       <div className="bg-white w-full mt-20">
         {/* Footer Section */}
-        <footer className="m-6 flex px-6 py-12">
+        <footer className="mt-6 mb-6 flex py-12 mx-20 justify-start w-full">
           <div className="w-[369px] flex flex-col gap-5">
             <p className="text-[#252B37] font-inter text-sm font-normal leading-5">
               <strong>Salesworx</strong>, crafted by Worxwide Consulting,
@@ -185,11 +185,10 @@ const Footer = () => {
           </div>
 
           <div
-            className=" w-full mx-auto grid grid-cols-3 gap-10"
-            // "max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-2"
+            className=" flex xl:gap-[169px] 2xl:gap-[180px] xl:ml-32 2xl:ml-[570px]"
           >
             {/* Column 2 */}
-            <div className="ml-40 w-[100px]">
+            <div className=" w-[100px]">
               <h3 className="text-left text-[#207C97] text-sm font-medium leading-5 font-inter ">
                 Company
               </h3>
@@ -208,7 +207,7 @@ const Footer = () => {
             </div>
 
             {/* Column 3 */}
-            <div className="ml-40 w-[200px]">
+            <div className="w-[200px]">
               <h3 className="text-left text-[#207C97] text-sm font-medium leading-5 font-inter ">
                 Features
               </h3>
@@ -227,7 +226,7 @@ const Footer = () => {
             </div>
 
             {/* Column 4 */}
-            <div className="ml-40 w-[100px]">
+            <div className=" w-[100px]">
               <h3 className="text-left text-[#207C97] text-sm font-medium leading-5 font-inter ">
                 Help
               </h3>
@@ -246,7 +245,9 @@ const Footer = () => {
             </div>
           </div>
         </footer>
-        <div className="p-4 border-t-2">
+
+
+        <div className="p-4 pt-8 pb-8 border-t-2 mx-20">
           <p className="text-center text-gray-500 text-sm">
             © Copyright 2025, All Rights Reserved by Salesworx.ai
           </p>
