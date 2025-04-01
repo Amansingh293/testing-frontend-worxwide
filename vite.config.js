@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import path from "path";
-
-
 
 // https://vite.dev/config/
 export default defineConfig({
-  server: {host:"0.0.0.0",
-    allowedHosts: ["www.salesworx.ai", "salesworx.ai"]
+  base: "/",
+  server: {
+    host: "0.0.0.0",
+    allowedHosts: ["www.salesworx.ai", "salesworx.ai"],
   },
   plugins: [react()],
   resolve: {
@@ -15,6 +15,4 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
-})
-
-
+});
